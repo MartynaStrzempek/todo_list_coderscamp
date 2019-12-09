@@ -11,3 +11,34 @@ a {
   color: #00B7FF;
   font-size: 100px;
 }
+
+/* CHECKBOX */
+.list_items {
+  color: rgb(0, 4, 255);
+  font-size: 20px;
+  list-style-type: none;
+}
+
+.remove_button {
+  width: 100px;
+  height: 54px;
+  border: 2px solid #00B7FF;
+  border-radius: 15px;
+  outline: none;
+  background-color: #00B7FF;
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  bottom: -50px;
+  right: -10px;
+}
+
+#container {
+  position: relative;
+  height: auto;
+  width: 400px;
+}
+
+.checkmark {
+  background-color: #eee;
+}
