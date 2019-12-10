@@ -14,7 +14,16 @@ a {
 }
 
 
-/*INPUT*/
+/*INPUT/BUTTON*/
+
+#input_button_wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 #input {
   width: 300px;
   height: 50px;
@@ -23,15 +32,31 @@ a {
   outline: none;
   color: #00B7FF;
   font-size: 20px;
+  text-align: center;
+  margin-right: 5px;
+  padding: 5px;
 }
 
-#add_btn{
+#input::placeholder {
+  color: rgb(190, 189, 189);
+  font-size: 18px;
+}
+
+#add_btn {
   width: 100px;
   height: 54px;
+  padding: 5px;
   border: 2px solid #00B7FF;
   border-radius: 15px;
   outline: none;
   background-color: #00B7FF;
   color: #fff;
   font-size: 20px;
+  cursor: pointer;
+}
+
+#add_btn:hover {
+  border-color: rgb(8, 169, 233);
+  background-color: rgb(8, 169, 233);
+  transition: 1s;
 }
