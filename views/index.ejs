@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>TODO List</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <form id="input_button_wrapper" action="/newtodo" method="POST">
+            <input id="input" type="text" placeholder="New item" name="item" value="test">
+            <button id="add_btn" type="submit">
+                Add
+            </button>
+    </form>
+    <div id="listOfItems">
+        <ul>
+            <% for(var i = 0; i < toDo.length; i++) { %>
+                <li> <%= toDo[i] %> </li>
+         <% } %>
+        </ul>
+    </div>
+</body>
+</html>

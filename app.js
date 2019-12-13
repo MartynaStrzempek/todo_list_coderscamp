@@ -5,6 +5,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require("body-parser")
 
 
 /** NEW */
@@ -19,15 +20,41 @@ var app = express();
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
 /** NEW */
-app.engine('html', cons.swig);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html');
+/*app.engine('html', cons.swig);
+app.set('views', path.join(__dirname, 'views'));*/
 
+//test
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended: true}));
+
+var toDo = [
+  "test 1",
+  "test2"
+]
+
+app.get("/", function(req, res){
+  res.render("index.ejs", {toDo: toDo})
+});
+
+//submit route
+app.post("/newtodo", function(req, res){
+  console.log("item added");
+  var item = req.body.item;
+  toDoList.push(item);
+  res.redirect("/");
+})
+
+
+app.listen(3000, function(){
+  console.log("serwer connected")
+})
+
+//end
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
+ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'));
 
 app.use('/', indexRouter);
