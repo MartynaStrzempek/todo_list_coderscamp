@@ -13,7 +13,7 @@
 
 <body>
     <form id="input_button_wrapper" action="/newtodo" method="POST">
-            <input id="input" type="text" placeholder="New item" name="item" value="test">
+            <input id="input" type="text" placeholder="New item" name="item" value="" required="required" >
             <button id="add_btn" type="submit">
                 Add
             </button>
@@ -21,7 +21,7 @@
     <div id="listOfItems">
         <ul>
             <% for(var i = 0; i < toDo.length; i++) { %>
-                <li> <%= toDo[i] %> </li>
+                <li id="listItem"> <%= toDo[i].name %> </li>
          <% } %>
         </ul>
     </div>

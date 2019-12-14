@@ -5,11 +5,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var bodyParser = require("body-parser")
-
+var bodyParser = require("body-parser");
 
 /** NEW */
 var mongo = require('mongodb');
+var mongoose = require("mongoose");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -23,17 +23,33 @@ var app = express();
 /*app.engine('html', cons.swig);
 app.set('views', path.join(__dirname, 'views'));*/
 
-//test
+//postMethod
+
+mongoose.connect("mongodb://localhost/todo")
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
-var toDo = [
+/* var toDo = [
   "test 1",
   "test2"
-]
+] */
 
+//mongoose schema
+var todoSchema = new mongoose.Schema({
+  name: String
+});
+
+var Todo = mongoose.model("Todo", todoSchema);
+
+//defoult route
 app.get("/", function(req, res){
-  res.render("index.ejs", {toDo: toDo})
+  Todo.find({}, function(err, toDo) {
+    if(err) console.log(err);
+    else {
+      res.render("index.ejs", {toDo: toDo});
+    }
+  })
 });
 
 
@@ -41,9 +57,16 @@ app.get("/", function(req, res){
 //submit route
 app.post("/newtodo", function(req, res){
   console.log("item added");
-  var item = req.body.item;
-  toDo.push(item);
-  res.redirect("/");
+  var newItem = new Todo({
+    name: req.body.item
+  });
+Todo.create(newItem, function(err, Todo){
+  if(err) console.log(err);
+  else {
+    console.log("Added: " + newItem);
+  }
+})  
+res.redirect("/");
 })
 
 app.engine('ejs', require('ejs').renderFile);
@@ -53,12 +76,12 @@ app.listen(3001, function(){
   console.log("serwer connected")
 })
 
-//end
+//endPostMethod
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
- app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'));
 
 app.use('/', indexRouter);

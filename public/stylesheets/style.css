@@ -60,3 +60,23 @@ a {
   background-color: rgb(8, 169, 233);
   transition: 1s;
 }
+
+
+
+/*LIST*/
+
+#listOfItems{
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+#listItem{
+  color: #00B7FF;
+  text-transform: capitalize;
+  font-size: 22px;
+  letter-spacing: 1px;
+  padding: 5px;
+}
