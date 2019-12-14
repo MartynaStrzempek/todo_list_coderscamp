@@ -36,16 +36,20 @@ app.get("/", function(req, res){
   res.render("index.ejs", {toDo: toDo})
 });
 
+
+
 //submit route
 app.post("/newtodo", function(req, res){
   console.log("item added");
   var item = req.body.item;
-  toDoList.push(item);
+  toDo.push(item);
   res.redirect("/");
 })
 
+app.engine('ejs', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 
-app.listen(3000, function(){
+app.listen(3001, function(){
   console.log("serwer connected")
 })
 
@@ -73,7 +77,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error.ejs');
 });
 
 module.exports = app;
