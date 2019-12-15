@@ -17,7 +17,7 @@ var Todo = mongoose.model('Todo', todoSchema);
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
-/* GET home page. */
+/* GET home page and get all to do's. */
 router.get('/', function (req, res, next) {
   Todo.find({}, function (err, toDoList) {
     if (err) console.log(err);
@@ -26,10 +26,13 @@ router.get('/', function (req, res, next) {
     }
   })
 });
+
+/* DELETE selected to do item*/
 router.post('/delete', function (req, res) {
   var itemName = req.body.name;
   Todo.findOneAndRemove({ name: itemName }, function (err, todo) {
-    res.redirect('/');
+    if (err) console.log(err)
+    else res.redirect('/');
   });
 });
 

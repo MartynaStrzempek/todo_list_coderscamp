@@ -6,7 +6,7 @@ body {
 a {
   color: #00B7FF;
 }
-/* CHECKBOX */
+/* CHECKBOX & DELETE BUTTON*/
 
 .list_items {
   color: rgb(0, 4, 255);
@@ -28,6 +28,8 @@ a {
   color: #fff;
   font-size: 10px;
   cursor: pointer;
+  position: relative;
+  left: 100px;
 }
 
 .remove_button:hover {

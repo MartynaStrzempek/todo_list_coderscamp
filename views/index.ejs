@@ -21,7 +21,7 @@
                     <input type="checkbox">
                     <%= toDoList[i].name %>
                     <form action="/delete" method="POST">
-                        <input type="hidden" name="name" value="<%= toDoList[i].name %>" />
+                        <input class="hidden" type="hidden" name="name" value="<%= toDoList[i].name %>" />
                         <button class="remove_button" type="submit">Delete</button>
                     </form>
                 </li>
