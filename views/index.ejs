@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>TODO List</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <section id="input_button_wrapper">
+        <input id="input" type="text" placeholder="New item">
+        <button id="add_btn" type="button">
+            Add
+        </button>
+    </section>
+    <div id="container">
+        <ul class="list_items">
+            <% for (var i=0; i< toDoList.length;i++){ %>
+            <li class="list_items">
+                <input type="checkbox">
+                <%= toDoList[i].name %>
+                <form action="/delete" method="POST">
+                    <input class="hidden" type="hidden" name="name" value="<%= toDoList[i].name %>" />
+                    <button class="remove_button" type="submit">Delete</button>
+                </form>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</body>
+
+</html>
