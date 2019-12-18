@@ -60,13 +60,13 @@ app.post("/newtodo", function(req, res){
   var newItem = new Todo({
     name: req.body.item
   });
-Todo.create(newItem, function(err, Todo){
-  if(err) console.log(err);
-  else {
-    console.log("Added: " + newItem);
-  }
-})  
-res.redirect("/");
+  Todo.create(newItem, function(err, Todo){
+    if(err) console.log(err);
+    else {
+      console.log("Added: " + newItem);
+    }
+  })  
+  res.redirect("/");
 })
 
 app.engine('ejs', require('ejs').renderFile);
