@@ -1,6 +1,10 @@
 <!doctype html>
 
 <html lang="en">
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 <head>
     <meta charset="utf-8">
 
@@ -12,6 +16,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <form id="input_button_wrapper" action="/newtodo" method="POST">
             <input id="input" type="text" placeholder="New item" name="item" value="" required="required" >
             <button id="add_btn" type="submit">
@@ -26,4 +31,28 @@
         </ul>
     </div>
 </body>
+=======
+    <section id="input_button_wrapper">
+        <input id="input" type="text" placeholder="New item">
+        <button id="add_btn" type="button">
+            Add
+        </button>
+    </section>
+    <div id="container">
+        <ul class="list_items">
+            <% for (var i=0; i< toDoList.length;i++){ %>
+            <li class="list_items">
+                <input type="checkbox">
+                <%= toDoList[i].name %>
+                <form action="/delete" method="POST">
+                    <input class="hidden" type="hidden" name="name" value="<%= toDoList[i].name %>" />
+                    <button class="remove_button" type="submit">Delete</button>
+                </form>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</body>
+
+>>>>>>> develop
 </html>
