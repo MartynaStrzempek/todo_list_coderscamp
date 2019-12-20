@@ -1,10 +1,7 @@
 <!doctype html>
 
 <html lang="en">
-<<<<<<< HEAD
-=======
 
->>>>>>> develop
 <head>
     <meta charset="utf-8">
 
@@ -16,28 +13,12 @@
 </head>
 
 <body>
-<<<<<<< HEAD
     <form id="input_button_wrapper" action="/newtodo" method="POST">
             <input id="input" type="text" placeholder="New item" name="item" value="" required="required" >
             <button id="add_btn" type="submit">
                 Add
             </button>
     </form>
-    <div id="listOfItems">
-        <ul>
-            <% for(var i = 0; i < toDo.length; i++) { %>
-                <li id="listItem"> <%= toDo[i].name %> </li>
-         <% } %>
-        </ul>
-    </div>
-</body>
-=======
-    <section id="input_button_wrapper">
-        <input id="input" type="text" placeholder="New item">
-        <button id="add_btn" type="button">
-            Add
-        </button>
-    </section>
     <div id="container">
         <ul class="list_items">
             <% for (var i=0; i< toDoList.length;i++){ %>
@@ -54,5 +35,4 @@
     </div>
 </body>
 
->>>>>>> develop
 </html>
