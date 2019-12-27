@@ -13,12 +13,12 @@
 </head>
 
 <body>
-    <section id="input_button_wrapper">
-        <input id="input" type="text" placeholder="New item">
-        <button id="add_btn" type="button">
-            Add
-        </button>
-    </section>
+    <form id="input_button_wrapper" action="/newtodo" method="POST">
+            <input id="input" type="text" placeholder="New item" name="item" value="" required="required" >
+            <button id="add_btn" type="submit">
+                Add
+            </button>
+    </form>
     <div id="container">
         <ul class="list_items">
             <% for (var i=0; i< toDoList.length;i++){ %>

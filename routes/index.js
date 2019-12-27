@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express();
 var bodyParser = require("body-parser");
+var mongo = require('mongodb');
+
+
 var mongoose = require('mongoose');
 
 router.engine('ejs', require('ejs').renderFile);
@@ -26,6 +29,23 @@ router.get('/', function (req, res, next) {
     }
   })
 });
+
+
+//post
+router.post("/newtodo", function(req, res){
+  console.log("item added");
+  var itemName = new Todo({
+    name: req.body.item
+  });
+  Todo.create(itemName, function(err, Todo){
+    if(err) console.log(err);
+    else {
+      console.log("Added: " + itemName);
+    }
+  })  
+  res.redirect("/");
+})
+
 
 /* DELETE selected to do item*/
 router.post('/delete', function (req, res) {
